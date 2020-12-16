@@ -1,4 +1,4 @@
-package com.example.themovies.core
+package com.example.themovies.core.models
 
 
 class Movie(

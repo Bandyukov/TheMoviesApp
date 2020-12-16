@@ -1,6 +1,5 @@
 package com.example.themovies.ui.recycler
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,9 +7,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.themovies.R
-import com.example.themovies.core.Movie
+import com.example.themovies.core.models.Movie
 import com.squareup.picasso.Picasso
-import java.lang.Exception
 
 private const val BASE_POSTER_URL = "https://image.tmdb.org/t/p/"
 private const val SMALL_POSTER_SIZE = "w185"

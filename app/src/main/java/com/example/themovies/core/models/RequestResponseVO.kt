@@ -1,6 +1,7 @@
-package com.example.themovies.core
+package com.example.themovies.core.models
 
 import android.os.Parcelable
+import com.example.themovies.core.models.MovieVO
 import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 

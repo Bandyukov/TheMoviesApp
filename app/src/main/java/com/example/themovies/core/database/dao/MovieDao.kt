@@ -1,8 +1,6 @@
 package com.example.themovies.core.database.dao
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.example.themovies.core.Movie
 import com.example.themovies.core.database.entities.MovieDB
 
 @Dao

@@ -1,10 +1,11 @@
 package com.example.themovies.core.repo
 
-import android.util.Log
 import com.example.themovies.core.*
 import com.example.themovies.core.database.dao.MovieDao
 import com.example.themovies.core.mapping.toMovie
 import com.example.themovies.core.mapping.toMovieDB
+import com.example.themovies.core.models.Movie
+import com.example.themovies.core.models.MovieVO
 import java.lang.Exception
 
 class MainRepository(
@@ -21,23 +22,20 @@ class MainRepository(
         try {
             // for test //
             //clearDatabase()
-            Log.i("res", "try to get data from net page = $__page__")
             val requestResponse = internetSource.getMoviesFromPage(__page__)
-            Log.i("res", "managed to ")
+
             val page = requestResponse.page
             val results = requestResponse.results
             if (flag) {
-                Log.i("res", "movies should be received from server\n database will be cleared")
+
                 clearDatabase()
                 flag = false
             }
-            Log.i("res", "DATABASE UPDATED")
+
             updateDatabase(results)
-            if (results.isNullOrEmpty())
-                Log.i("res", "Null from net")
+
             return results.map { it.toMovie() }
         } catch (e: Exception) {
-            Log.i("res", "we inside catch")
             return null
         }
     }
@@ -52,7 +50,6 @@ class MainRepository(
 
     private suspend fun updateDatabase(moviesVO: List<MovieVO>) {
         localSource.insertListOfMovies(moviesVO.map { it.toMovieDB() })
-        Log.i("res", "====DATABASE WAS UPDATED!!!====")
     }
 
     suspend fun clearDatabase() {

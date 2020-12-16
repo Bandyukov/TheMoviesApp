@@ -4,8 +4,8 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.themovies.core.Connection
-import com.example.themovies.core.Movie
+import com.example.themovies.core.network.Connection
+import com.example.themovies.core.models.Movie
 import com.example.themovies.core.repo.MainRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

@@ -2,7 +2,6 @@ package com.example.themovies.ui.fragments
 
 import android.os.Bundle
 import android.util.DisplayMetrics
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +11,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.themovies.R
-import com.example.themovies.core.Connection
+import com.example.themovies.core.network.Connection
 import com.example.themovies.core.MoviesApi
 import com.example.themovies.core.database.database_itself.MovieDatabase
 import com.example.themovies.core.repo.MainRepository

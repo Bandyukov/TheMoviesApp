@@ -1,4 +1,4 @@
-package com.example.themovies.core
+package com.example.themovies.core.network
 
 import android.annotation.TargetApi
 import android.content.BroadcastReceiver
@@ -9,6 +9,7 @@ import android.net.*
 import android.os.Build
 import androidx.lifecycle.LiveData
 
+// No success //
 class NetworkConnection(private val context: Context) : LiveData<Boolean>() {
     private var connectivityManager: ConnectivityManager =
         context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
