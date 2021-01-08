@@ -4,13 +4,11 @@ import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-@Entity(tableName = "movie_table")
-data class MovieDB(
-
+@Entity(tableName = "favorite_movies_table")
+data class FavoriteMovieDB(
     @ColumnInfo(name = "id")
     val id: Int = 0,
 
@@ -32,7 +30,7 @@ data class MovieDB(
     @ColumnInfo(name = "vote_count")
     val voteCount: Int,
 
-) : Parcelable {
+    ) : Parcelable {
     @PrimaryKey(autoGenerate = true)
     var uniqueId: Int = 0
 
