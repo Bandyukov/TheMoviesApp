@@ -14,7 +14,6 @@ import retrofit2.http.Query
 
 private const val API_KEY = "c4711720f8c269eff09b8acc50d352a8"
 private const val BASE_URL = "https://api.themoviedb.org/"
-//https://api.themoviedb.org/3/discover/movie?api_key=c4711720f8c269eff09b8acc50d352a8
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
@@ -26,8 +25,6 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface MoviesApiService {
-//    @GET("3/discover/movie?api_key=c4711720f8c269eff09b8acc50d352a8&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false")
-//    suspend fun getMoviesFromPage(@Query(value = "page") page: Int) : RequestResponseVO
 
     @GET("3/discover/movie?api_key=c4711720f8c269eff09b8acc50d352a8&language=en-US")
     suspend fun getMoviesFromNet(

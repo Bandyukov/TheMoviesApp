@@ -8,13 +8,13 @@ import com.example.themovies.core.database.entities.MovieDB
 import com.example.themovies.core.database.dao.MovieDao
 import com.example.themovies.core.database.entities.FavoriteMovieDB
 
-@Database(entities = [MovieDB::class, FavoriteMovieDB::class], version = 7, exportSchema = false)
+@Database(entities = [MovieDB::class, FavoriteMovieDB::class], version = 10, exportSchema = false)
 abstract class MovieDatabase : RoomDatabase() {
 
     abstract val movieDao: MovieDao
 
     companion object {
-        const val DATABASE_NAME = "movie.db"
+        private const val DATABASE_NAME = "movie.db"
 
         @Volatile
         private var INSTANCE: MovieDatabase? = null

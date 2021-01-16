@@ -17,13 +17,13 @@
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.example.themovies.ui.fragments.DetailFragment"
-        android:label="DetailFragment" >
-        <action
-            android:id="@+id/action_detailFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
-    </fragment>
+        android:label="DetailFragment" />
     <fragment
         android:id="@+id/favoriteMoviesFragment"
         android:name="com.example.themovies.ui.fragments.FavoriteMoviesFragment"
-        android:label="FavoriteMoviesFragment" />
+        android:label="FavoriteMoviesFragment" >
+        <action
+            android:id="@+id/action_favoriteMoviesFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
 </navigation>

@@ -18,11 +18,12 @@ interface MovieDao {
     @Delete
     suspend fun deleteMovie(movieDB: MovieDB)
 
-    @Query("SELECT * FROM movie_table WHERE uniqueId ==:movieId")
+    @Query("SELECT * FROM movie_table WHERE id ==:movieId")
     suspend fun getMovieById(movieId: Int) : MovieDB
 
     @Query("DELETE FROM movie_table")
     suspend fun deleteAllMovies()
+
 
 
     @Query("SELECT * FROM favorite_movies_table")
@@ -31,10 +32,13 @@ interface MovieDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertFavoriteMovie(favoriteMovie: FavoriteMovieDB)
 
-    @Query("SELECT * FROM favorite_movies_table WHERE uniqueId ==:movieId")
-    suspend fun getFavoriteMovieById(movieId: Int) : FavoriteMovieDB
+    @Query("SELECT * FROM favorite_movies_table WHERE id ==:movieId")
+    suspend fun getFavoriteMovieById(movieId: Int) : FavoriteMovieDB?
 
     @Delete
     suspend fun deleteFavoriteMovie(favoriteMovie: FavoriteMovieDB)
+
+    @Query("DELETE FROM favorite_movies_table")
+    suspend fun deleteAllFavoriteMovies()
 
 }

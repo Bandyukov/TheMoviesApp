@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/deleteFromFavorite" android:title="@string/delete_from_favorite"/>
+    <item android:id="@+id/goToMainFragment" android:title="@string/home_screen"/>
+</menu>

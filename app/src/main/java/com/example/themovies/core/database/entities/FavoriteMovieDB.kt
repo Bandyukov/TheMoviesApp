@@ -31,8 +31,8 @@ data class FavoriteMovieDB(
     val voteCount: Int,
 
     ) : Parcelable {
-    @PrimaryKey(autoGenerate = true)
-    var uniqueId: Int = 0
+    @PrimaryKey
+    var uniqueId: Int = 2
 
     constructor(
         id: Int,
@@ -42,7 +42,7 @@ data class FavoriteMovieDB(
         releaseDate: String,
         rating:Double,
         voteCount: Int,
-        uniqueId: Int = 0
+        uniqueId: Int
     )
             : this(id, originalTitle, overview, posterPath, releaseDate, rating, voteCount) {
         this.uniqueId = uniqueId

@@ -12,52 +12,52 @@ import com.example.themovies.core.models.movie.Movie
 import com.example.themovies.core.models.movie.MovieVO
 import com.example.themovies.core.models.review.Review
 import com.example.themovies.core.models.trailer.Trailer
+import com.example.themovies.core.preferences.AppPreferences
 import java.lang.Exception
 
 class MainRepository(
     private val internetSource: MoviesApiService,
-    private val localSource: MovieDao
+    private val localSource: MovieDao,
+    private val appPreferences: AppPreferences
 ) {
 
     companion object {
         var flag = true
         var currentPage = 0
-        private const val REVENUE_PARAM = "revenue.desc"
-        private const val POPULARITY_PARAM = "popularity.desc"
-        private const val RELEASE_PARAM = "release_date.desc"
-        private const val VOTE_AVERAGE_PARAM = "vote_average.desc"
-        private const val VOTE_COUNT_PARAM = "vote_count.desc"
     }
 
+    fun updatePage(page: Int) = appPreferences.setPage(page)
+
+    fun updateSort(sort: Int) = appPreferences.setSort(sort)
+
+    fun getPage() : Int = appPreferences.getPage()
+
+    fun getSort() : Int = appPreferences.getSort()
+
+
     //========== Network ==========//
-    suspend fun getAllMoviesFromNetwork(__page__: Int) {
+    suspend fun getAllMoviesFromNetwork(methodOfSort: String, __page__: Int) {
         try {
             //clearDatabase()
-            //val requestResponse = internetSource.getMoviesFromPage(__page__)//
-                Log.i("page", "Try to get from net")
 
             val requestResponse = internetSource.getMoviesFromNet(
-                VOTE_COUNT_PARAM,
+                methodOfSort,
                 includeAdult = false,
                 includeVideo = true,
                 __page__,
                 800
             )
-            Log.i("page", "Managed to get from net")
 
             currentPage = requestResponse.page
-            Log.i("page", "page from net = $currentPage")
             val results = requestResponse.results
 
             if (flag) {
-                Log.i("page", "DB CLEARED")
                 clearDatabase()
                 flag = false
             }
 
             updateDatabase(results)
         } catch (ex: Exception) {
-            Log.i("page", "Unsuccessful")
             return
         }
     }
@@ -66,7 +66,6 @@ class MainRepository(
         return try {
             val request = internetSource.getTrailers(movieId)
 
-            val id = request.id
             val results = request.results
 
             results.map { it.toTrailer() }
@@ -102,14 +101,22 @@ class MainRepository(
     suspend fun getMovie(id: Int): Movie = localSource.getMovieById(id).toMovie()
 
 
+
     suspend fun getAllFavoriteMoviesFromDB(): List<FavoriteMovieDB> =
         localSource.getAllFavoriteMovies()
 
     suspend fun insertFavoriteMovie(favoriteMovie: FavoriteMovieDB) =
         localSource.insertFavoriteMovie(favoriteMovie)
 
+    suspend fun getFavoriteMovie(id: Int) : Movie? {
+        val movieFavDB = localSource.getFavoriteMovieById(id) ?: return null
+        return movieFavDB.toMovie()
+    }
+
     suspend fun deleteFavoriteMovieFromDB(favoriteMovie: FavoriteMovieDB) =
         localSource.deleteFavoriteMovie(favoriteMovie)
+
+    suspend fun deleteAllFavoriteMovies() = localSource.deleteAllFavoriteMovies()
 
 
 }
