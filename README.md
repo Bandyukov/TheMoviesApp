@@ -1,6 +1,14 @@
 # TheMoviesApp
 In this application you can take a look at list of movies ordered by popularity, rating etc
 
+### Brief description
+- Built an Android Kotlin Application to follow the latest news in the filmindustry
+
+- Applicatian has an infinity scroll
+
+- The Movie Database API was implemented
+
+
 
 ### There are some screens from the app
 
