@@ -2,7 +2,7 @@
 In this application you can take a look at list of movies ordered by popularity, rating etc
 
 ### Brief description
-- Built an Android Kotlin Application to follow the latest news in the filmindustry
+- Built an Android Kotlin Application to follow the latest news in the film industry
 
 - Applicatian has an infinity scroll
 
